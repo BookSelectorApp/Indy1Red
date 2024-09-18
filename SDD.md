@@ -118,12 +118,5 @@ Our application will be developed using the React Native framework which generat
 # 8.	Bibliography
 McGuire, M. (2024, March 24). Top 4 software development methodologies. Synopsys. Retrieved August 30, 2024, from https://www.synopsys.com/blogs/software-security/top-4-software-development-methodologies.html
 # 9.	Appendix 
-Proof of completion - Thomas Roberts:
- 
-Proof of completion - Tristan Sanford:
- 
- 
-
-Proof of completion - Francesca Del Aguila: 
  
  
