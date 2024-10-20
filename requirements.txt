@@ -1,6 +1,6 @@
 pandas
 pickle5
-sklearn
+scikit-learn
 fastapi
 uvicorn
 supabase-py
