@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8d4adbb1c6e866a03e5957d0379c21b23ca6d79e9d69bc79485318b029ed8147
-size 112
+#ignore csv
+*.csv
+
+#ignore python compiled files
+__pycache__/
+*.py[cod]
+
+#ignore virtual environments
+venv/
+.env
