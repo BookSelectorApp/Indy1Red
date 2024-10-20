@@ -8,12 +8,9 @@ import pickle
 from sklearn.metrics.pairwise import cosine_similarity
 from fastapi import FastAPI
 from supabase import create_client, Client
-import os
 
-database_url = str(os.environ.get('DATABASE_URL'))
-database_key = str(os.environ.get('DATABASE_KEY'))
-url: str = database_url
-key: str = database_key
+url: str = "database_url"
+key: str = "database_key"
 supabase: Client = create_client(url, key)
 
 def fetchBooks(): #needed because supabase only returns 1000 records at a time; slowly builds the entire response; slow query and will eventually just create a new query/better logic instead of having to build the entire database in memory like this
