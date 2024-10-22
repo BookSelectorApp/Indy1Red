@@ -60,7 +60,8 @@ def recommendByTitle(title, numRecommendations=5):
                     "title": matching_book['title'],
                     "author": matching_book['author'],
                     "description": matching_book['description'],
-                    "genres": matching_book['genres']
+                    "genres": matching_book['genres'],
+                    "coverImg": matching_book['coverImg']
                 })
         return recommendations
     else:
@@ -81,7 +82,8 @@ def recommendByGenre(genre, numRecommendations=5):
         "title": book['title'],
         "author": book['author'],
         "description": book['description'],
-        "genres": book['genres']
+        "genres": book['genres'],
+        "coverImg": book['coverImg']
     } for book in matching_books[:numRecommendations]]
 
 #gets 5 recs for each genre, 5 for each title, and the top 5 overall based on likedPercent with no other attribute filtered
@@ -99,7 +101,8 @@ def getAllRecommendations(genres, titles, numRecommendationsPerSource=5):
         "title": book['title'],
         "author": book['author'],
         "description": book['description'],
-        "genres": book['genres']
+        "genres": book['genres'],
+        "coverImg": book['coverImg']
     } for book in topRatedBooks[:numRecommendationsPerSource]])
 
     #remove duplicates (so if Dystopia returned Divergent and The Hunger Games returned Divergent, it would only return one Divergent) by converting dict to keys of frozenset (immutable) of tuples with values of each book dict; then back to list of values from the KV pair which is just each book dict/object
