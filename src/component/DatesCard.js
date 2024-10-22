@@ -45,7 +45,7 @@ export default function DatesCard({ item }) {
             }}
           >
             <Image
-              source={{ uri: sampleImage }} //this will eventually be replaced with the actual cover
+              source={{ uri: item.coverImg }} //this will eventually be replaced with the actual cover
               style={{
                 width: '100%',
                 height: '100%',
