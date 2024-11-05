@@ -23,7 +23,7 @@ export default function HomeScreen() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch(`http://localhost/recommendations?genres=${genres}&titles=${titles}`); //current API implementation accepts genres and titles for recommendations
+        const response = await fetch(`https://indy1red.onrender.com/recommendations?genres=${genres}&titles=${titles}`); //current API implementation accepts genres and titles for recommendations
         const data = await response.json();
         setBooks(data.recommendations);  //set books constant to the array of recommendations from the response JSON
         setLoading(false); //used so content is not displayed until backend/db query is finished
