@@ -5,9 +5,13 @@
 
 from fastapi import FastAPI
 from supabase import create_client, Client
+import os
 
-url = "db_url"
-key = "db_key"
+db_url = str(os.environ.get('DATABASE_URL'))
+db_key = str(os.environ.get('DATABASE_KEY'))
+
+url = db_url
+key = db_key
 supabase: Client = create_client(url, key)
 
 def recommendByTitle(title, numRecommendations=5):
