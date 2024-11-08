@@ -1,3 +1,7 @@
 fastapi
 uvicorn
 supabase
+bcrypt
+uuid
+python-multipart
+pydantic
