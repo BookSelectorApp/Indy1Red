@@ -8,6 +8,9 @@ import ChatDetailScreen from "../screens/ChatDetailScreen";
 import ChatScreen from "../screens/ChatScreen";
 import ProfileScreen from "../screens/ProfileScreen";   
 import HomeScreen from "../screens/HomeScreen";
+import LoginScreen from "../screens/LoginScreen";
+import RegisterScreen from "../screens/RegisterScreen";
+import TBRScreen from "../screens/TBRScreen";
 import { Ionicons} from "@expo/vector-icons"
 
 const Stack = createNativeStackNavigator();
@@ -23,7 +26,7 @@ export default function AppNavigation() {
                     let iconName;
                     if (route.name === 'Home') {
                         iconName = "home";
-                    } else if (route.name === 'Chat') {
+                    } else if (route.name === 'TBR') {
                         iconName = "chatbubbles-outline";
                     } else if (route.name === 'Profile') {
                         iconName = "person-outline";
@@ -53,7 +56,7 @@ export default function AppNavigation() {
             })}
         >
             <Tab.Screen name="Home" component={HomeScreen}/>
-            <Tab.Screen name="Chat" component={ChatScreen}/>
+            <Tab.Screen name="TBR" component={TBRScreen}/>
             <Tab.Screen name="Profile" component={ProfileScreen}/>
         </Tab.Navigator>
         );
@@ -62,11 +65,13 @@ export default function AppNavigation() {
 
     return <NavigationContainer>
         <Stack.Navigator
-            initialRouteName="HomeTabs"
+            initialRouteName="Login"
             screenOptions={{
                 headerShown: false}}
                 >
             <Stack.Screen name ="Welcome" component={WelcomeScreen}/>
+            <Stack.Screen name ="Login" component={LoginScreen}/>
+            <Stack.Screen name ="Register" component={RegisterScreen}/>
             <Stack.Screen 
             name= "ChatDetailScreen" 
             component={ChatDetailScreen}

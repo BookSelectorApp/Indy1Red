@@ -1,49 +1,69 @@
 import { View, Text, Platform, Image, Dimensions, ActivityIndicator, TouchableOpacity } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
+import { getFocusedRouteNameFromRoute, useFocusEffect } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { profile } from '../../assets/images';
 import { BellIcon } from 'react-native-heroicons/outline';
 import DeckSwiper from 'react-native-deck-swiper';
 import DatesCard from "../component/DatesCard";
+import { addToTBR, getPreferences, getRecommendations } from '../api/API';
+import { useUser } from '../constants/UserContext';
 
 const android = Platform.OS === 'android';
 const { width, height } = Dimensions.get('window');
 
-//example genres and titles to use for the API; this will eventually be pulled from user preferences
-const genres = "Dystopia,Fantasy";
-const titles = "The Hunger Games,Divergent";
-
 export default function HomeScreen() {
+  const { userId } = useUser(); //access userid from context
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   //fetch recommendations from API
-  useEffect(() => {
-    const fetchBooks = async () => {
-      try {
-        const response = await fetch(`https://indy1red.onrender.com/recommendations?genres=${genres}&titles=${titles}`); //current API implementation accepts genres and titles for recommendations
-        const data = await response.json();
-        setBooks(data.recommendations);  //set books constant to the array of recommendations from the response JSON
-        setLoading(false); //used so content is not displayed until backend/db query is finished
-      } catch (error) {
-        console.error("Error fetching book recommendations: ", error);
-        setLoading(false);
-      }
-    };
+  const fetchBooks = async () => {
+    setLoading(true);
+    try {
+      const preferencesData = await getPreferences(userId);
+      const { preferred_titles, preferred_genres } = preferencesData.preferences;
+      let titles = preferred_titles, genres = preferred_genres;
 
-    fetchBooks(); //actually request the data
-  }, []);
+      if (titles === undefined || titles === null) {titles = [];}
+      if (genres === undefined || genres === null) {genres = [];}
+
+      const data = await getRecommendations(genres.join(','), titles.join(',')); //current API implementation accepts genres and titles for recommendations
+      setBooks(data.recommendations);  //set books constant to the array of recommendations from the response JSON
+    } catch (error) {
+      console.error("Error fetching book recommendations: ", error);
+    } finally {
+      setLoading(false); //used so content is not displayed until backend/db query is finished
+    }
+  };
+
+  //refresh list every time tab is re-opened
+  useFocusEffect(
+    useCallback(() => {
+        fetchBooks();
+    }, [userId])
+  );
 
   //if left swipe, skip and move on
   const onSwipeLeft = (index) => {
-    console.log(`Book dismissed: ${books[index]?.title}`);
+    //console.log(`Book dismissed: ${books[index]?.title}`);
   };
 
   //if right swipe, add to TBR; functionality not actually here yet
-  const onSwipeRight = (index) => {
-    console.log(`Book added to TBR: ${books[index]?.title}`);
+  const onSwipeRight = async (index) => {
+    const bookId = books[index]?.bookId;
+    if (bookId && userId) {
+      const result = await addToTBR(userId, bookId);
+      if (result.message === "Book added to TBR list") {
+        console.log("Book added to TBR list:", bookId);
+      } else if (result.message === "Book already added to TBR list") {
+        console.log("Book already added to TBR list:", bookId)
+      } else {
+        console.error("Error adding to TBR:", result.detail);
+      }
+    }
   };
 
   return (
