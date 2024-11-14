@@ -441,10 +441,10 @@ import {
   
   export const profileData = [
     {
-      name: "Jacob Jones",
-      age: 30,
+      name: "Ariel Williams",
+      age: 21,
       imgUrl: profile,
-      hobbies: ["Hiking", "Photography", "Cooking"],
-      bio: "I'm an adventurous person who loves exploring new places, trying out different cuisines, capturing moments through photography, and spending time in nature. I enjoy hiking on weekends and experimenting with new recipes in the kitchen. Traveling and experiencing different cultures are some of my greatest passions, and I'm always looking for my next adventure.",
+      hobbies: ["Romance", "Fantasy", "Enemies to Lovers"],
+      bio: "Hey there! I'm Ariel, a book lover who finds solace in the pages of romance and fantasy novels. Enemies to lovers is my favorite trope, and I'm always on the lookout for new recommendations. Let's dive into a world of magic and love together.",
     },
   ];

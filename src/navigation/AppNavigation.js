@@ -27,7 +27,7 @@ export default function AppNavigation() {
                     if (route.name === 'Home') {
                         iconName = "home";
                     } else if (route.name === 'TBR') {
-                        iconName = "chatbubbles-outline";
+                        iconName = "library-outline"; //change to book-outline!
                     } else if (route.name === 'Profile') {
                         iconName = "person-outline";
                     }
@@ -65,7 +65,7 @@ export default function AppNavigation() {
 
     return <NavigationContainer>
         <Stack.Navigator
-            initialRouteName="Login"
+            initialRouteName="Welcome"
             screenOptions={{
                 headerShown: false}}
                 >

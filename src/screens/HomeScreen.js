@@ -48,7 +48,7 @@ export default function HomeScreen() {
 
   //if left swipe, skip and move on
   const onSwipeLeft = (index) => {
-    //console.log(`Book dismissed: ${books[index]?.title}`);
+    //console.log(Book dismissed: ${books[index]?.title}`);
   };
 
   //if right swipe, add to TBR; functionality not actually here yet

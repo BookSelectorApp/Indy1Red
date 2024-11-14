@@ -88,15 +88,15 @@ export default function WelcomeScreens() {
             width: wp(70),
           }}
           >
-            Looking for your next read has never been this exciting
+            Match with books that suit your taste and preferences!
           </Text>
         </View>
 
         <View className="w-full p-6 px-10">
         <TouchableOpacity 
-        className="bg-[#f26322] px-4 py-4 rounded-xl flex-row justify-center items-center w-[45%]"
+        className="bg-[#556B2F] px-4 py-4 rounded-xl flex-row justify-center items-center w-[45%]"
         onPress={() => {
-          navigation.navigate("HomeTabs");
+          navigation.navigate("Login");
         }}
         >
            
