@@ -1,7 +1,7 @@
 #Tristan Sanford
 #Senior Project: Book Dating App
-#November 7, 2024
-#V2.0
+#November 15, 2024
+#V2.1
 
 from fastapi import FastAPI, HTTPException
 from supabase import create_client, Client
@@ -201,8 +201,21 @@ def removeFromTBR(item: TBR):
 
 @app.get("/tbr/view/") #view TBR list
 def viewTBR(user_id: str):
+    output = [] #tbr_list only stores bookid, this code grabs necessary information from book table
     result = supabase.table("tbr_list").select("book_id").eq("user_id", str(user_id)).execute()
-    return {"tbr_list": result.data}
+    for bookEntry in result.data:
+        book = supabase.table("books").select("*").eq("bookId", f"{bookEntry['book_id'].strip()}").execute().data
+        if book:
+            book = book[0]
+            output.append({
+                "title": book['title'],
+                "author": book['author'],
+                "description": book['description'],
+                "genres": book['genres'],
+                "coverImg": book['coverImg'],
+                "bookId": book['bookId']
+            })
+    return {"tbr_list": output}
 
 @app.get("/preferences/") #get preferences
 def getPreferences(user_id: str):
