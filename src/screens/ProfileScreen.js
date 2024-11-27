@@ -12,7 +12,6 @@ import { useFocusEffect } from '@react-navigation/native';
 
 
 export default function ProfileScreen() {
-    //come back here and try to cleanup the code to make it look better
     // i combined the profile screen and the old profile screen into one file
     const [title, setTitle] = useState('');
     const [genre, setGenre] = useState('');
@@ -36,7 +35,7 @@ export default function ProfileScreen() {
       }, [userId])
     );
 
-    // Validation: Avoid empty and duplicate values
+    // Validation: avoid empty and duplicate values
     const handleAddTitle = async () => {
         if (!title.trim()) return Alert.alert("Error", "Title cannot be empty");
         if (preferences.titles.includes(title)) return Alert.alert("Error", "Title already exists");
@@ -94,7 +93,7 @@ export default function ProfileScreen() {
           }}
         />
 
-      {/* Header - maybe delete this*/}
+      {/* Header */}
       <View className="w-full absolute flex-row justify-end items-center pt-10">
         <View className="p-2 rounded-full bg-black/40 mr-5 justify-center items-center">
         <CameraIcon size={hp(3.5)} color="white" strokeWidth={1.5} /> 
@@ -108,7 +107,7 @@ export default function ProfileScreen() {
           <Text>Edit</Text>
         </View>
 
-        {/* User Hobbies // change this to user preferences in index.js*/}
+        {/* User's Preference */}
         <View style={{ flexDirection: 'row', marginVertical: 8 }}>
           {data.hobbies?.map((hobby, index) => (
             <View
@@ -189,19 +188,19 @@ export default function ProfileScreen() {
   )}
 />
 
-<Text style={styles.subtitle}>Your Genres</Text>
-<FlatList
-  data={preferences.genres}
-  keyExtractor={(item) => item}
-  renderItem={({ item }) => (
-      <View style={styles.bubbleWrapper}> 
-          <View style={styles.bubbleContainer}>
-              <Text style={styles.bubbleText}>{item}</Text>
-          </View>
-          <TouchableOpacity style={styles.deleteButton} onPress={() => handleDeleteGenre(item)}>
-              <Text style={styles.deleteButtonText}>Delete</Text>
-          </TouchableOpacity>
-      </View>
+    <Text style={styles.subtitle}>Your Genres</Text>
+    <FlatList
+        data={preferences.genres}
+        keyExtractor={(item) => item}
+        renderItem={({ item }) => (
+            <View style={styles.bubbleWrapper}> 
+                <View style={styles.bubbleContainer}>
+                    <Text style={styles.bubbleText}>{item}</Text>
+            </View>
+            <TouchableOpacity style={styles.deleteButton} onPress={() => handleDeleteGenre(item)}>
+                <Text style={styles.deleteButtonText}>Delete</Text>
+            </TouchableOpacity>
+        </View>
         )}
       />
     </View>

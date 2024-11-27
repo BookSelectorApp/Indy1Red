@@ -4,8 +4,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import WelcomeScreen from "../screens/WelcomeScreens";
-import ChatDetailScreen from "../screens/ChatDetailScreen";
-import ChatScreen from "../screens/ChatScreen";
 import ProfileScreen from "../screens/ProfileScreen";   
 import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
@@ -72,13 +70,8 @@ export default function AppNavigation() {
             <Stack.Screen name ="Welcome" component={WelcomeScreen}/>
             <Stack.Screen name ="Login" component={LoginScreen}/>
             <Stack.Screen name ="Register" component={RegisterScreen}/>
-            <Stack.Screen 
-            name= "ChatDetailScreen" 
-            component={ChatDetailScreen}
-            options={{
-                presentation: 'modal',
-            }} />
             <Stack.Screen name="HomeTabs" component={HomeTabs}/>
+            <Stack.Screen name="TBR" component={TBRScreen} />
         </Stack.Navigator>
     </NavigationContainer>;
   }
