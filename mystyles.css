@@ -1,0 +1,96 @@
+body { background-color:#a288a6;
+      background-image: url(background.jpg);
+      color: #1c1d21;
+      font-family: Arial, helvetica;;
+}
+#wrapper { width: 80%;
+           min-width: 700px;
+           max-width: 1024px;
+           margin-right: auto;
+           margin-left: auto;
+           background-color:#ccbcbc;
+           box-shadow: 3px 3px 3px #1c1d21;
+}
+header { background-color: #1c1d21;
+         color: #ccbcbc;
+       font-family: Arial, helvetica;;
+}
+header p {
+    margin-bottom: 0;
+}
+h1 { line-height: 200%;
+        text-align: center;
+    background-repeat: no-repeat;
+    background-position: right;
+    padding-left: 20px;
+    height: 72px;
+    margin-top: 0;
+    margin-bottom: 0;
+background-color:#1c1d21;
+color:#ccbcbc;
+}
+nav { font-weight: bold;
+     padding: 5px;
+     float:left;
+     width: 160px;
+     padding: 20px 5px 0 20px;
+}
+nav a { text-decoration: none; }
+nav a:link { color: #1c1d21; }
+nav a:visited { color: #1c1d21 }
+nav a:hover { color: #bb9bb0; }
+nav ul { list-style-type: none;
+       margin: 0;
+       padding-left: 0;
+}
+h2 { color: #1c1d21;
+    font-family: Arial, helvetica;
+}
+dt { color: #1c1d21;
+    font-weight: bold;
+}
+.resort { color: #1c1d21;
+          font-size: 1.2em;
+}
+footer { font-size: 0.70em;
+       text-align: center;
+       font-style: italic;
+       padding: 10px;
+       margin-left: 170px;
+       background-color: #f1e3e4;
+}
+h3 { color: #1c1d21;
+}
+main { padding-left: 20px;
+        padding-right: 20px;
+        background-color: #f1e3e4;
+        margin-left: 170px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+}
+main p {
+    margin: 4px 0px;
+    text-indent: 2em;
+}
+main img {
+    width: auto; 
+    height: 170px; 
+    border: solid 4px #1c1d21; 
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+main strong { font-size: 18px; }
+main ul { padding-left: 15px; margin: 5px 0px; }
+.clear { clear: both; }
+header, nav, main, footer { display: block; }
+
+.column {
+    float: left;
+    width: 33.33%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
