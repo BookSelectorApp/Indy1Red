@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   StyleSheet,
+  LogBox,
 } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { removeFromTBR, viewTBR } from '../api/API';
@@ -16,6 +17,7 @@ export default function TBRScreen() {
   const [tbrList, setTbrList] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  LogBox.ignoreAllLogs(true);
   // fetch TBR list
   const fetchTBRBooks = async () => {
     setLoading(true);

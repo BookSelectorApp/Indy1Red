@@ -36,7 +36,7 @@ export default function RegisterScreen({ navigation }) {
   const handleRegister = async () => {
     const result = await registerUser(username, password);
     if (result.message === 'User registered successfully') {
-      navigation.navigate('Recommendation'); // Navigate to Recommendation screen
+      navigation.navigate('Login'); // Navigate to Login screen
     } else {
       Alert.alert('Error', 'Username taken');
     }
